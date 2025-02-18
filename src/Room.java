@@ -17,6 +17,28 @@ public class Room {
         this.left = left;
         this.right = right;
     }
+    public Room getConnections(String direction) {
+        if (forward == null && back == null && left == null && right == null) {
+            if (direction.equals("forward")) {
+                return forward;
+            }
+            else if (direction.equals("back")) {
+                return back;
+            }
+            else if (direction.equals("left")) {
+                return left;
+            }
+            else if (direction.equals("right")) {
+                return right;
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            return null;
+        }
+    }
     public void setItem(Item item) {
         this.item = item;
     }

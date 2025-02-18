@@ -1,11 +1,19 @@
- class Player {
-    private String playerName;
-    private int playerCoin;
-    private Room currentRoom;
-    private Item inventory;
+import java.util.ArrayList;
+import java.util.List;
 
+class Player {
+    private String playerName;
+    private Room currentRoom;
+    private ArrayList<Item> inventory;
+
+    public Player(String playerName, Room currentRoom, List<Item> inventory) {
+        this.playerName = playerName;
+
+
+    }
      public Player(Room startRoom) {
          this.currentRoom = startRoom;
+         this.inventory = new ArrayList<>();
      }
 
      public Room getCurrentRoom() {
@@ -18,7 +26,7 @@
 
      public void TakeItem() {
          if(currentRoom.getItem() != null) {
-             inventory = currentRoom.getItem();
+             inventory.add(currentRoom.getItem());
              currentRoom.setItem(null);
              System.out.println("In this room player("+playerName+")"+" Taken! "+inventory);
          }
@@ -29,11 +37,11 @@
      public void showInventory() {
          System.out.println("INVENTORY:");
          if (inventory != null) {
-             System.out.println(inventory);
-         }
+         for (Item item : inventory) {
+                 System.out.print("["+item+"] ");
+         }}
          else {
-             System.out.println("There is nothing in the inventory");
+             System.out.println("here not to show inventory");
          }
      }
-
 }
